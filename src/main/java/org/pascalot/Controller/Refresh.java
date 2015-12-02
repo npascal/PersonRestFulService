@@ -14,15 +14,10 @@ public class Refresh
     public String refreshStatement = "";
     public String toggleLink;
 
-    static final String REFRESH_COOKIE_NAME = "trafficLights-refresh";
+    static final String REFRESH_COOKIE_NAME = "personService-refresh";
     static final String REFRESH_PARAMETER = "refresh";
 
-    /**
-     *
-     * @param refreshUrl what URL to refresh the page. Usually relative to the current page.
-     * @param request perhaps containing the cookie and user requested parameter.
-     * @param response where to put the cookie.
-     */
+
     public Refresh(String refreshUrl, int seconds, HttpServletRequest request, HttpServletResponse response)
     {
         this.refreshUrl = refreshUrl;
@@ -83,28 +78,19 @@ public class Refresh
         this(refreshUrl, 3, request, response);
     }
 
-    /**
-     *
-     * @return the meta http-equiv HTTP command to instruct a page to auto refresh. Or empty string if refresh is disabled.
-     */
+
     public String getRefreshStatement()
     {
         return refreshStatement;
     }
 
-    /**
-     *
-     * @return an <a> link to start or stop auto refresh.
-     */
+
     public String getToggleLink()
     {
         return toggleLink;
     }
 
-    /**
-     * Convenience methods that emits both refresh statement and and link.
-     * @return
-     */
+   
     public String getStatements()
     {
         return getRefreshStatement() + "\n" + getToggleLink();
