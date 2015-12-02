@@ -11,6 +11,15 @@ public class Person implements Serializable
     private String firstName, lastName, gender;
     private Instant dateOfBirth;
 
+    public Person()
+    {}
+
+    public Person(String firstName, String lastName, Instant dateOfBirth)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+    }
     public String getFirstName()
     {
         return firstName;

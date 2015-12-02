@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
          updateCheck="false" monitoring="autodetect">
 
-       <diskStore path="/tmp/cache"/>
+       <diskStore path="/tmp/cache/"/>
 
        <!--TerracottaConfig
        ========================
@@ -20,12 +20,13 @@
                      diskExpiryThreadIntervalSeconds="120"
                      memoryStoreEvictionPolicy="LFU" />
        <cache name="dataCache" 
-              maxElementsInMemory="5"
+              maxElementsInMemory="50"
               eternal="true"
               timeToIdleSeconds="300"
               timeToLiveSeconds="600"
               overflowToDisk="true"
               diskPersistent="true"
+              maxElementsOnDisk="100"
               diskExpiryThreadIntervalSeconds="1200"
               memoryStoreEvictionPolicy="LFU">
     </cache>
