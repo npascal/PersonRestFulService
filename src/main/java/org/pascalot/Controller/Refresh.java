@@ -90,7 +90,7 @@ public class Refresh
         return toggleLink;
     }
 
-   
+
     public String getStatements()
     {
         return getRefreshStatement() + "\n" + getToggleLink();

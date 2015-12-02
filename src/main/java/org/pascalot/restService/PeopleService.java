@@ -1,8 +1,11 @@
 package org.pascalot.restService;
 
 import org.pascalot.restResource.People;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.text.MessageFormat;
 import java.time.Instant;
 import java.util.Map;
@@ -16,6 +19,14 @@ public class PeopleService
 {
     private final Map<String, People> peolpleMap = new ConcurrentHashMap<String, People>();
 
+
+    @PostConstruct
+    public void init()
+    {
+        //initialize peopleMap with defaults
+    }
+
+    @Cacheable(value = "dataCache", key = "#firstName+lastName+dateOfBirth")
     public String createPeople(String firstName, String lastName, String dateOfBirth)
     {
         if(firstName!=null && !firstName.isEmpty() && lastName!=null && !lastName.isEmpty())
@@ -36,7 +47,7 @@ public class PeopleService
             return MessageFormat.format("ERROR: Cannot create person with first name {0}, last name {1} and dateOfBirth {2}", firstName, lastName, dateOfBirth);
         }
     }
-
+    @Cacheable(value = "dataCache", key = "#firstName+lastName")
     public String getPeople(String firstName, String lastName, String dateOfBirth){
         if(peolpleMap.containsKey(firstName+lastName))
             return peolpleMap.get(firstName + lastName).toString();
@@ -45,7 +56,7 @@ public class PeopleService
             return MessageFormat.format("ERROR: Cannot find person with first name {0}, last name {1} and dateOfBirth {2}", firstName, lastName, dateOfBirth);
         }
     }
-
+    @Cacheable(value = "dataCache", key = "#firstName+lastName")
     public String updatePeople(String firstName, String lastName, String dateOfBirth){
         if(peolpleMap.containsKey(firstName+lastName))
             return peolpleMap.get(firstName + lastName).toString();
@@ -54,7 +65,7 @@ public class PeopleService
             return MessageFormat.format("ERROR: Cannot find person with first name {0}, last name {1} and dateOfBirth {2}", firstName, lastName, dateOfBirth);
         }
     }
-
+    @CacheEvict(value = "dataCache", key = "#firstName+lastName")
     public String deletePeople(String firstName, String lastName, String dateOfBirth)
     {
         if (peolpleMap.containsKey(firstName + lastName))
