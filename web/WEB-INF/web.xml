@@ -6,20 +6,20 @@
          version="3.0">
 
     <display-name>PeopleRestFul-WebService</display-name>
-    <!--<context-param>
+   <!-- <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
+        <param-value>/WEB-INF/peopleRestFulServer-dispatcher-servlet.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>-->
     <servlet>
-        <servlet-name>peopleRestFul-Server-dispatcher</servlet-name>
+        <servlet-name>peopleRestFulServer-dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>peopleRestFul-Server-dispatcher</servlet-name>
+        <servlet-name>peopleRestFulServer-dispatcher</servlet-name>
         <url-pattern>*.form</url-pattern>
     </servlet-mapping>
 </web-app>

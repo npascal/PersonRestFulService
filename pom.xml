@@ -129,7 +129,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>personService</finalName>
+        <finalName>personRestFulService</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -184,7 +184,7 @@
                             <ProjectVersion>${project.version}</ProjectVersion>
                         </manifestEntries>
                     </archive>
-                    <warName>personService</warName>
+                    <warName>personRestFulService</warName>
                 </configuration>
             </plugin>
         </plugins>
