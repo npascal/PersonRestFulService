@@ -9,12 +9,12 @@ import java.util.List;
 public class Family implements Serializable
 {
     private String lastName;
-    private List<Person> members;
+    private List<People> members;
 
     public Family()
     {}
 
-    public Family(String lastName, List<Person>members)
+    public Family(String lastName, List<People>members)
     {
         this.lastName = lastName;
         this.members = members;
@@ -24,7 +24,7 @@ public class Family implements Serializable
         return lastName;
     }
 
-    public List<Person> getMembers()
+    public List<People> getMembers()
     {
         return members;
     }
@@ -34,7 +34,7 @@ public class Family implements Serializable
         this.lastName = lastName;
     }
 
-    public void setMembers(List<Person> members)
+    public void setMembers(List<People> members)
     {
         this.members = members;
     }
