@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false" monitoring="autodetect">
+
+       <diskStore path="/tmp/cache"/>
+
+       <!--TerracottaConfig
+       ========================
+       -->
+        <terracottaConfig url="localhost:9510"/>
+       <!-- Default Cache Configuration, with name 'default' -->
+       <defaultCache maxElementsInMemory="3"
+                     eternal="true"
+                     timeToIdleSeconds="120"
+                     timeToLiveSeconds="120"
+                     overflowToDisk="true"
+                     maxElementsOnDisk="100"
+                     diskPersistent="true"
+                     diskExpiryThreadIntervalSeconds="120"
+                     memoryStoreEvictionPolicy="LFU" />
+       <cache name="dataCache" 
+              maxElementsInMemory="5"
+              eternal="true"
+              timeToIdleSeconds="300"
+              timeToLiveSeconds="600"
+              overflowToDisk="true"
+              diskPersistent="true"
+              diskExpiryThreadIntervalSeconds="1200"
+              memoryStoreEvictionPolicy="LFU">
+    </cache>
+</ehcache>
